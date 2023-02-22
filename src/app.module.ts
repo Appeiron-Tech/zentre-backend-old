@@ -1,8 +1,10 @@
-import { Module } from '@nestjs/common';
-import { ConfigModule, ConfigService } from '@nestjs/config';
-import { MongooseModule } from '@nestjs/mongoose';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { Module } from '@nestjs/common'
+import { ConfigModule, ConfigService } from '@nestjs/config'
+import { MongooseModule } from '@nestjs/mongoose'
+import { HubModule } from './application/tenancy/hub/hub.module'
+import { CompanyModule as DBCompanyModule } from './infrastructure/database/company/company.module'
+// import { AppController } from './app.controller'
+// import { AppService } from './app.service'
 
 @Module({
   imports: [
@@ -14,14 +16,12 @@ import { AppService } from './app.service';
       }),
       inject: [ConfigService],
     }),
+    //Application
+    HubModule,
+    //Infrastructure
+    DBCompanyModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  // controllers: [AppController],
+  // providers: [AppService],
 })
 export class AppModule {}
-
-/*
-application
-domain
-infrastructure
-*/
