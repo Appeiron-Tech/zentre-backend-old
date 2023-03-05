@@ -1,7 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose'
 import { HydratedDocument, Schema as MongooseSchema } from 'mongoose'
 import { Company } from './company.schema'
-import { ICompanySn } from './companySn.interface'
+import { ICompanySn } from '../interfaces/companySn.interface'
 
 export type CompanySnDocument = HydratedDocument<CompanySn>
 
@@ -10,7 +10,7 @@ export class CompanySn implements ICompanySn {
   _id: MongooseSchema.Types.ObjectId
 
   @Prop({ type: MongooseSchema.Types.ObjectId, ref: 'Company', required: true })
-  companyId: Company
+  company: Company
 
   @Prop({ type: String, maxLength: 4, required: true, unique: true })
   code: string

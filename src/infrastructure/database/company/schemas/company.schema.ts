@@ -1,8 +1,8 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose'
 import { HydratedDocument, Schema as MongooseSchema } from 'mongoose'
+import { ICompany } from '../interfaces/company.interface'
+import { ICompanyApp } from '../interfaces/companyApp.interface'
 import { ICompanyStyle } from '../interfaces/companyStyle.interface'
-import { ICompany } from './company.interface'
-import { CompanySn } from './companySn.schema'
 
 export type CompanyDocument = HydratedDocument<Company>
 
@@ -52,14 +52,11 @@ export class Company implements ICompany {
   @Prop({ type: [{ type: MongooseSchema.Types.ObjectId, ref: 'CompanySn' }] })
   sns: MongooseSchema.Types.ObjectId[]
 
+  @Prop({ type: [{ type: MongooseSchema.Types.Mixed }] })
+  apps: ICompanyApp[]
+
   // @Prop({ length: 6, nullable: true })
   // answers: ClientAnswer[]
-
-  // @OneToMany(() => ClientApp, (app) => app.client, { eager: true })
-  // apps: ClientApp[]
-
-  // @OneToMany(() => ClientSN, (sn) => sn.client, { eager: true })
-  // sns: ClientSN[]
 }
 
 export const CompanySchema = SchemaFactory.createForClass(Company)

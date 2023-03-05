@@ -1,5 +1,5 @@
 import { Schema } from 'mongoose'
-import { ICompanySn } from './companySn.interface'
+import { ICompanyApp } from '../interfaces/companyApp.interface'
 
 export interface ICompany {
   _id: Schema.Types.ObjectId
@@ -30,5 +30,5 @@ export interface ICompany {
   }
   sns: any[]
   //   answers: ClientAnswer[]
-  //   apps: ClientApp[]
+  apps: ICompanyApp[]
 }

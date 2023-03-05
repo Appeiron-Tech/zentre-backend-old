@@ -17,7 +17,6 @@ export class CompanyService {
 
   async findCompanySns(companySnsQuery: FilterQuery<CompanySn>): Promise<any> {
     console.log(companySnsQuery)
-    // return this.snModel.find(companySnsQuery).exec()
     return this.snModel.find(companySnsQuery).exec()
   }
 }

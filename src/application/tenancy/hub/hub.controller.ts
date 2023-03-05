@@ -24,4 +24,16 @@ export class HubController {
       console.error(e)
     }
   }
+
+  @Get('/announcements')
+  async getAnnouncements(): Promise<any> {
+    try {
+      const announcements = await this.hubService.getAnnouncements({
+        company: '63c700411aa173942ca540ab',
+      })
+      return announcements
+    } catch (e) {
+      console.error(e)
+    }
+  }
 }
