@@ -36,4 +36,16 @@ export class HubController {
       console.error(e)
     }
   }
+
+  @Get('/contact')
+  async getContacts(): Promise<any> {
+    try {
+      const contacts = await this.hubService.getContacts({
+        company: '63c700411aa173942ca540ab',
+      })
+      return contacts
+    } catch (e) {
+      console.error(e)
+    }
+  }
 }

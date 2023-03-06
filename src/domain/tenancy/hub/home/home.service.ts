@@ -29,6 +29,8 @@ export class HomeService {
     }
   }
 
+  // ////////////////////////////////////////////////////////////////////////////// //
+  // ******************************  Announcement  ******************************** //
   async getAnnouncements(params: { company: string; screen?: string }): Promise<any> {
     params = removeUndefinedKeys(params)
     try {

@@ -3,8 +3,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config'
 import { MongooseModule } from '@nestjs/mongoose'
 import { HubModule } from './application/tenancy/hub/hub.module'
 import { CompanyModule as DBCompanyModule } from './infrastructure/database/company/company.module'
-// import { AppController } from './app.controller'
-// import { AppService } from './app.service'
+import { ContactModule as DBContactModule } from './infrastructure/database/contact/contact.module'
 
 @Module({
   imports: [
@@ -20,8 +19,7 @@ import { CompanyModule as DBCompanyModule } from './infrastructure/database/comp
     HubModule,
     //Infrastructure
     DBCompanyModule,
+    DBContactModule,
   ],
-  // controllers: [AppController],
-  // providers: [AppService],
 })
 export class AppModule {}

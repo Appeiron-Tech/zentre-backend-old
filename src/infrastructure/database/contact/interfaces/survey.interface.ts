@@ -1,9 +1,10 @@
 import { Schema } from 'mongoose'
 
-export interface HubSurvey {
+export interface ISurvey {
   _id: Schema.Types.ObjectId
-  store: Schema.Types.ObjectId
-  rate: number
+  companyId: Schema.Types.ObjectId
+  storeId: Schema.Types.ObjectId
+  rate?: number
   comment?: string
-  createdAt: number
+  createdAt: Date
 }
