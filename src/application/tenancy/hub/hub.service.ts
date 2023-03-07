@@ -46,7 +46,7 @@ export class HubService {
 
   // ////////////////////////////////////////////////////////////////////////////// //
   // ********************************  Store  ********************************** //
-  async getStores(params: { company: string }): Promise<any> {
+  async getStores(params: { company: string; name?: string }): Promise<any> {
     try {
       return await this.dnHomeService.getStores({ ...params })
     } catch (error) {

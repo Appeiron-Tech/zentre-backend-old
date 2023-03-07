@@ -54,6 +54,7 @@ export class HubController {
     try {
       const stores = await this.hubService.getStores({
         company: '63c700411aa173942ca540ab',
+        name: 'Miraflores',
       })
       return stores
     } catch (e) {

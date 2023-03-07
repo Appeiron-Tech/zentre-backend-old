@@ -44,7 +44,7 @@ export class HomeService {
 
   // ////////////////////////////////////////////////////////////////////////////// //
   // ******************************  Store  ******************************** //
-  async getStores(params: { company: string }): Promise<any> {
+  async getStores(params: { company: string; name?: string }): Promise<any> {
     params = removeUndefinedKeys(params)
     try {
       return await this.dbStoreService.findStore({ ...params })
