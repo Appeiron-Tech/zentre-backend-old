@@ -16,11 +16,15 @@ export class ProductService {
     @InjectModel(VariationOption.name) private variationOptionModel: Model<VariationOptionDocument>,
   ) {}
 
-  async findProducts(contactQuery: FilterQuery<Product>, populate: boolean): Promise<any> {
-    if (populate) {
-      return await this.productModel.find(contactQuery).exec()
+  async findProducts(productQuery: FilterQuery<Product>, populate?: boolean): Promise<any> {
+    if (!populate) {
+      return await this.productModel.find(productQuery).exec()
     }
-    return await this.productModel.find(contactQuery).populate({ path: 'variations' }).exec()
+    return await this.productModel
+      .find(productQuery)
+      .populate({ path: 'productVariations', model: 'ProductVariation' })
+      .populate({ path: 'categories', model: 'Category' })
+      .exec()
   }
 
   async findProductVariation(productVariationQuery: FilterQuery<ProductVariation>): Promise<any> {

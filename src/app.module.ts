@@ -5,6 +5,7 @@ import { HubModule } from './application/tenancy/hub/hub.module'
 import { CompanyModule as DBCompanyModule } from './infrastructure/database/company/company.module'
 import { ContactModule as DBContactModule } from './infrastructure/database/contact/contact.module'
 import { StoreModule as DBStoreModule } from './infrastructure/database/store/store.module'
+import { ProductModule as DBProductModule } from './infrastructure/database/product/product.module'
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { StoreModule as DBStoreModule } from './infrastructure/database/store/st
     DBCompanyModule,
     DBContactModule,
     DBStoreModule,
+    DBProductModule,
   ],
 })
 export class AppModule {}

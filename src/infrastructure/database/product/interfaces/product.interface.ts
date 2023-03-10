@@ -34,7 +34,7 @@ export interface IProduct {
   ratingCount: number
   purchaseNote: string
   menuOrder: number
-  variations?: Schema.Types.ObjectId[]
+  productVariations?: Schema.Types.ObjectId[]
   categories?: Schema.Types.ObjectId[]
   crossProducts?: Schema.Types.ObjectId[]
   images?: IImage[]

@@ -1,10 +1,15 @@
 import { Injectable } from '@nestjs/common'
 import { HomeService as DNHomeService } from 'src/domain/tenancy/hub/home/home.service'
 import { ContactService as DNContactService } from 'src/domain/tenancy/hub/contact/contact.service'
+import { ProductService as DNProductService } from 'src/domain/tenancy/hub/products/product.service'
 
 @Injectable()
 export class HubService {
-  constructor(private dnHomeService: DNHomeService, private dnContactService: DNContactService) {}
+  constructor(
+    private dnHomeService: DNHomeService,
+    private dnContactService: DNContactService,
+    private dnProductService: DNProductService,
+  ) {}
 
   async getCompany(params: { tenancyName: string }): Promise<any> {
     try {
@@ -49,6 +54,16 @@ export class HubService {
   async getStores(params: { company: string; name?: string }): Promise<any> {
     try {
       return await this.dnHomeService.getStores({ ...params })
+    } catch (error) {
+      throw error
+    }
+  }
+
+  // ////////////////////////////////////////////////////////////////////////////// //
+  // ********************************  Product  ********************************** //
+  async getProducts(params: { companyId: string; populate?: boolean }): Promise<any> {
+    try {
+      return await this.dnProductService.getProducts({ ...params })
     } catch (error) {
       throw error
     }

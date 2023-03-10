@@ -61,4 +61,18 @@ export class HubController {
       console.error(e)
     }
   }
+
+  // ////////////////////////////////////////////////////////////////////////////// //
+  // ********************************  Products  ********************************* //
+  @Get('/products')
+  async getProducts(): Promise<any> {
+    try {
+      const stores = await this.hubService.getProducts({
+        companyId: '63c700411aa173942ca540ab',
+      })
+      return stores
+    } catch (e) {
+      console.error(e)
+    }
+  }
 }

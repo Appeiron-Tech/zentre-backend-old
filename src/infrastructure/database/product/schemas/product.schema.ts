@@ -93,9 +93,9 @@ export class Product implements IProduct {
   menuOrder: number
 
   @Prop({ type: [{ type: MongooseSchema.Types.ObjectId, ref: 'ProductVariation' }] })
-  variations?: MongooseSchema.Types.ObjectId[]
+  productVariations?: MongooseSchema.Types.ObjectId[]
 
-  @Prop({ type: [{ type: MongooseSchema.Types.ObjectId }] })
+  @Prop({ type: [{ type: MongooseSchema.Types.ObjectId, ref: 'Category' }] })
   categories?: MongooseSchema.Types.ObjectId[]
 
   @Prop({ type: [{ type: MongooseSchema.Types.ObjectId }] })
