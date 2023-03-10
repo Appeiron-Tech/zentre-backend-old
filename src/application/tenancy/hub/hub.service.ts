@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common'
-import { HomeService as DNHomeService } from 'src/domain/tenancy/hub/home/home.service'
-import { ContactService as DNContactService } from 'src/domain/tenancy/hub/contact/contact.service'
-import { ProductService as DNProductService } from 'src/domain/tenancy/hub/products/product.service'
+import { HomeService as DNHomeService } from 'src/domain/hub/home/home.service'
+import { ContactService as DNContactService } from 'src/domain/hub/contact/contact.service'
+import { ProductService as DNProductService } from 'src/domain/hub/products/product.service'
 
 @Injectable()
 export class HubService {

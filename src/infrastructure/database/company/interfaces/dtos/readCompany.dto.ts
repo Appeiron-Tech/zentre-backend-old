@@ -1,4 +1,6 @@
 import { Schema } from 'mongoose'
+import { ICompanyApp } from '../companyApp.interface'
+import { ICompanyStyle } from '../companyStyle.interface'
 
 export class ReadCompanyDto {
   _id: Schema.Types.ObjectId
@@ -14,17 +16,10 @@ export class ReadCompanyDto {
   ga_email_analytics: string
   ga_view_id: string
   ga_api_key: string
-  style: {
-    brightness: string
-    primary: string
-    onPrimary: string
-    secondary: string
-    onSecondary: string
-    error: string
-    onError: string
-    background: string
-    onBackground: string
-    surface: string
-    onSurface: string
-  }
+  style: ICompanyStyle
+  sns: any[]
+  //   answers: ClientAnswer[]
+  apps: ICompanyApp[]
+  updatedAt: Date
+  createdAt: Date
 }

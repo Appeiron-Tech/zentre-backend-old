@@ -55,6 +55,12 @@ export class Company implements ICompany {
   @Prop({ type: [{ type: MongooseSchema.Types.Mixed }] })
   apps: ICompanyApp[]
 
+  @Prop({ type: Date, default: Date.now })
+  updatedAt: Date
+
+  @Prop({ type: Date, default: Date.now })
+  createdAt: Date
+
   // @Prop({ length: 6, nullable: true })
   // answers: ClientAnswer[]
 }
