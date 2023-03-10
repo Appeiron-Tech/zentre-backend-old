@@ -3,6 +3,7 @@ import { ICompanyApp } from '../companyApp.interface'
 export interface InsCompanyDto {
   tenancyName: string
   name: string
+  country?: string
   currencyName: string
   currencySymbol: string
   apps: ICompanyApp[]

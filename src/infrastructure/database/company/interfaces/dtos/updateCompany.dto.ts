@@ -4,6 +4,8 @@ import { ICompanyStyle } from '../companyStyle.interface'
 export class UpdCompanyDto {
   tenancyName?: string
   name?: string
+  officialName?: string
+  country?: string
   description?: string
   businessType?: string
   logo?: string

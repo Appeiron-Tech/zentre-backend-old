@@ -16,6 +16,12 @@ export class Company implements ICompany {
   @Prop({ type: String, maxLength: 64, required: true })
   name: string
 
+  @Prop({ type: String, maxLength: 128 })
+  officialName: string
+
+  @Prop({ type: String, maxLength: 3 })
+  country: string
+
   @Prop({ type: String, maxLength: 1028 })
   description: string
 

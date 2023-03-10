@@ -1,6 +1,8 @@
 import { Injectable } from '@nestjs/common'
 import { InjectModel } from '@nestjs/mongoose'
 import { FilterQuery, Model } from 'mongoose'
+import { InsCompanyDto } from './interfaces/dtos/insertCompany.dto'
+import { ReadCompanyDto } from './interfaces/dtos/readCompany.dto'
 import { Company, CompanyDocument } from './schemas/company.schema'
 import { CompanySn, CompanySnDocument } from './schemas/companySn.schema'
 
@@ -16,7 +18,12 @@ export class CompanyService {
   }
 
   async findCompanySns(companySnsQuery: FilterQuery<CompanySn>): Promise<any> {
-    console.log(companySnsQuery)
-    return this.snModel.find(companySnsQuery).exec()
+    return await this.snModel.find(companySnsQuery).exec()
+  }
+
+  async insertCompany(company: InsCompanyDto): Promise<ReadCompanyDto> {
+    console.log('to save: ')
+    console.log(company)
+    return await this.companyModel.create(company)
   }
 }

@@ -6,6 +6,8 @@ export class ReadCompanyDto {
   _id: Schema.Types.ObjectId
   tenancyName: string
   name: string
+  officialName: string
+  country: string
   description: string
   businessType: string
   logo: string
