@@ -30,7 +30,7 @@ export class Product implements IProduct {
   @Prop({ type: String, maxLength: 16 })
   sku: string
 
-  @Prop({ type: MongooseSchema.Types.Decimal128 })
+  @Prop({ type: Number })
   price: number
 
   @Prop({ type: Date })
@@ -39,7 +39,7 @@ export class Product implements IProduct {
   @Prop({ type: Date })
   onSaleTo: Date
 
-  @Prop({ type: MongooseSchema.Types.Decimal128 })
+  @Prop({ type: Number })
   salePrice: number
 
   @Prop({ type: Boolean })

@@ -26,7 +26,7 @@ export interface IProductVariation {
     height: number
   }
   menuOrder: number
-  variationOptions?: Schema.Types.ObjectId[]
+  variationOptions: Schema.Types.ObjectId[]
   images?: IImage[]
   updatedAt: Date
   createdAt: Date

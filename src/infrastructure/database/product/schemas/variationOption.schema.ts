@@ -4,7 +4,7 @@ import { IVariationOption } from '../interfaces/variationOption.interface'
 
 export type VariationOptionDocument = HydratedDocument<VariationOption>
 
-@Schema({ timestamps: true })
+@Schema({ collection: 'variationOptions', timestamps: true })
 export class VariationOption implements IVariationOption {
   _id: MongooseSchema.Types.ObjectId
 

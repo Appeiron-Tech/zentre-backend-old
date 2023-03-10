@@ -5,7 +5,7 @@ import { IProductVariation } from '../interfaces/productVariation.interface'
 
 export type ProductVariationDocument = HydratedDocument<ProductVariation>
 
-@Schema({ timestamps: true })
+@Schema({ collection: 'productVariations', timestamps: true })
 export class ProductVariation implements IProductVariation {
   _id: MongooseSchema.Types.ObjectId
 
@@ -70,6 +70,9 @@ export class ProductVariation implements IProductVariation {
 
   @Prop({ type: [{ type: MongooseSchema.Types.Mixed }] })
   images?: IImage[]
+
+  @Prop({ type: [{ type: MongooseSchema.Types.ObjectId, ref: 'VariationOption' }] })
+  variationOptions: MongooseSchema.Types.ObjectId[]
 
   @Prop({ type: Date, default: Date.now })
   updatedAt: Date
