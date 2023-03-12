@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common'
 import { ProductService as DBProductService } from 'src/infrastructure/database/product/product.service'
 
 @Injectable()
-export class ProductService {
+export class CommerceService {
   constructor(private dbProductService: DBProductService) {}
 
   async getProducts(params: { id?: string; companyId?: string }): Promise<any> {
