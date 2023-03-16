@@ -1,7 +1,6 @@
 import { Schema } from 'mongoose'
 
-export interface ICompanySn {
-  _id: Schema.Types.ObjectId
+export interface CreateSNDto {
   company: Schema.Types.ObjectId
   code: string
   url: string
