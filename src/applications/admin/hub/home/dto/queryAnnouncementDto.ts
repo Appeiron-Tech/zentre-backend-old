@@ -1,4 +1,4 @@
-import { IsBoolean, IsEnum, IsMongoId, IsOptional, IsString } from 'class-validator'
+import { IsBooleanString, IsEnum, IsMongoId, IsOptional, IsString } from 'class-validator'
 import { Schema } from 'mongoose'
 
 enum ScreenCode {
@@ -18,13 +18,10 @@ export class QueryAnnouncementDto {
   screenCode?: string
 
   @IsOptional()
+  @IsString()
   app?: string
 
   @IsOptional()
-  @IsString()
-  title?: string
-
-  @IsOptional()
-  @IsBoolean()
+  @IsBooleanString()
   isActive?: boolean
 }

@@ -12,7 +12,7 @@ export class Announcement implements IAnnouncement {
   companyId: MongooseSchema.Types.ObjectId
 
   @Prop({ type: String, maxLength: 4 })
-  screen?: string
+  screenCode?: string
 
   @Prop({ type: String, maxLength: 4 })
   app?: string

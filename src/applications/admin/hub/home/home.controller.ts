@@ -1,5 +1,5 @@
-import { Body, Controller, Get, Param, Patch, Query, ValidationPipe } from '@nestjs/common'
-import { removeUndefinedKeys } from 'src/applications/shared/utils/jsonUtils'
+import { Body, Controller, Get, Param, Patch, Query } from '@nestjs/common'
+import { isEmptyObj, removeUndefinedKeys } from 'src/applications/shared/utils/jsonUtils'
 import { QueryAnnouncementDto } from './dto/QueryAnnouncementDto'
 import { UpdateAnnouncementDto } from './dto/updateAnnouncementDto'
 import { UpdateCompanyDto } from './dto/updateCompanyDto'
@@ -39,14 +39,17 @@ export class HomeController {
   @Get('/announcement/:id?')
   async getAnnouncement(
     @Param('id') announcementId: string,
-    @Body() queryAnnouncement: QueryAnnouncementDto,
+    @Query() queryAnnouncement: QueryAnnouncementDto,
   ): Promise<any> {
     try {
-      const announcements = await this.homeService.getAnnouncement(
-        announcementId,
-        queryAnnouncement,
-      )
-      return announcements
+      if (announcementId || !isEmptyObj(queryAnnouncement)) {
+        console.log(queryAnnouncement)
+        const announcements = await this.homeService.getAnnouncement(
+          announcementId,
+          queryAnnouncement,
+        )
+        return announcements
+      }
     } catch (e) {
       console.error(e)
     }

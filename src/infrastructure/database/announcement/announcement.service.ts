@@ -13,7 +13,6 @@ export class AnnouncementService {
   ) {}
 
   async findAnnouncements(announcementsQuery: FilterQuery<Announcement>): Promise<any> {
-    console.log(announcementsQuery)
     return await this.announcementModel.find(announcementsQuery).exec()
   }
 
