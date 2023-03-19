@@ -1,5 +1,7 @@
-import { Controller, Get, Patch } from '@nestjs/common'
+import { Body, Controller, Get, Param, Patch, Query, ValidationPipe } from '@nestjs/common'
 import { removeUndefinedKeys } from 'src/applications/shared/utils/jsonUtils'
+import { QueryAnnouncementDto } from './dto/QueryAnnouncementDto'
+import { UpdateAnnouncementDto } from './dto/updateAnnouncementDto'
 import { UpdateCompanyDto } from './dto/updateCompanyDto'
 import { HomeService } from './home.service'
 
@@ -22,13 +24,45 @@ export class HomeController {
     try {
       const companyId = '63c700411aa173942ca540ab'
       const rawCompany: UpdateCompanyDto = {
-        officialName: 'my new official name 7',
-        country: undefined,
         description: 'my new description 7',
       }
       const company = removeUndefinedKeys(rawCompany)
       const updatedCompany = await this.homeService.updateCompany(companyId, company)
       return updatedCompany
+    } catch (e) {
+      console.error(e)
+    }
+  }
+
+  // ////////////////////////////////////////////////////////////////////////////// //
+  // ******************************  Announcement  ******************************** //
+  @Get('/announcement/:id?')
+  async getAnnouncement(
+    @Param('id') announcementId: string,
+    @Body() queryAnnouncement: QueryAnnouncementDto,
+  ): Promise<any> {
+    try {
+      const announcements = await this.homeService.getAnnouncement(
+        announcementId,
+        queryAnnouncement,
+      )
+      return announcements
+    } catch (e) {
+      console.error(e)
+    }
+  }
+
+  @Patch('/announcement/:id')
+  async updateAnnouncement(
+    @Param('id') announcementId: string,
+    @Body() announcement: UpdateAnnouncementDto,
+  ): Promise<any> {
+    try {
+      const updatedAnnouncement = await this.homeService.updateAnnouncement(
+        announcementId,
+        announcement,
+      )
+      return updatedAnnouncement
     } catch (e) {
       console.error(e)
     }

@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common'
 import { InjectModel } from '@nestjs/mongoose'
-import { FilterQuery, Model, Types } from 'mongoose'
+import { FilterQuery, Model } from 'mongoose'
 import { ICompanySn } from './interfaces/companySn.interface'
 import { CreateCompanyDto } from './dtos/createCompany.dto'
 import { CreateSNDto } from './dtos/createSN.dto'

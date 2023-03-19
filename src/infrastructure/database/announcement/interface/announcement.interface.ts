@@ -2,7 +2,7 @@ import { Schema } from 'mongoose'
 
 export interface IAnnouncement {
   _id: Schema.Types.ObjectId
-  company: Schema.Types.ObjectId
+  companyId: Schema.Types.ObjectId
   screenCode?: string
   app?: string
   title?: string

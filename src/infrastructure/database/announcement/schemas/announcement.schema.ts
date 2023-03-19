@@ -9,7 +9,7 @@ export class Announcement implements IAnnouncement {
   _id: MongooseSchema.Types.ObjectId
 
   @Prop({ type: MongooseSchema.Types.ObjectId, required: true })
-  company: MongooseSchema.Types.ObjectId
+  companyId: MongooseSchema.Types.ObjectId
 
   @Prop({ type: String, maxLength: 4 })
   screen?: string

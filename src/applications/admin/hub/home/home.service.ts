@@ -3,6 +3,8 @@ import { removeUndefinedKeys } from 'src/applications/shared/utils/jsonUtils'
 import { CompanyService as DBCompanyService } from 'src/infrastructure/database/company/company.service'
 import { AnnouncementService as DBAnnouncementService } from 'src/infrastructure/database/announcement/announcement.service'
 import { UpdateCompanyDto } from './dto/updateCompanyDto'
+import { UpdateAnnouncementDto } from './dto/updateAnnouncementDto'
+import { QueryAnnouncementDto } from './dto/QueryAnnouncementDto'
 
 @Injectable()
 export class HomeService {
@@ -40,10 +42,24 @@ export class HomeService {
 
   // ////////////////////////////////////////////////////////////////////////////// //
   // ******************************  Announcement  ******************************** //
-  async getAnnouncements(params: { company: string; screen?: string }): Promise<any> {
-    params = removeUndefinedKeys(params)
+  async getAnnouncement(
+    announcementId: string,
+    queryAnnouncement: QueryAnnouncementDto,
+  ): Promise<any> {
     try {
-      return await this.dbAnnouncementService.findAnnouncements({ ...params })
+      if (announcementId) queryAnnouncement._id = announcementId
+      return await this.dbAnnouncementService.findAnnouncements(queryAnnouncement)
+    } catch (error) {
+      throw error
+    }
+  }
+
+  async updateAnnouncement(
+    announcementId: string,
+    announcement: UpdateAnnouncementDto,
+  ): Promise<any> {
+    try {
+      return await this.dbAnnouncementService.updateAnnouncement(announcementId, announcement)
     } catch (error) {
       throw error
     }
