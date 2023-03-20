@@ -1,3 +1,5 @@
+// https://tkssharma.com/nestjs-playing-with-query-param-dto/
+
 import { IsBooleanString, IsEnum, IsMongoId, IsOptional, IsString } from 'class-validator'
 import { Schema } from 'mongoose'
 

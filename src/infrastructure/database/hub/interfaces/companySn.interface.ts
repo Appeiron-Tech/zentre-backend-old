@@ -1,8 +1,8 @@
 import { Schema } from 'mongoose'
 
-export interface ICompanySn {
+export interface IHubCompanySn {
   _id: Schema.Types.ObjectId
-  company: Schema.Types.ObjectId
+  companyId: Schema.Types.ObjectId
   code: string
   url: string
   active: boolean

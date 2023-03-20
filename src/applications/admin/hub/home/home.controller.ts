@@ -9,10 +9,10 @@ import { HomeService } from './home.service'
 export class HomeController {
   constructor(private homeService: HomeService) {}
 
-  @Get('/company')
-  async getCompany(): Promise<any> {
+  @Get('/company/:id')
+  async getCompany(@Param('id') companyId: string): Promise<any> {
     try {
-      const company = await this.homeService.getCompany({ tenancyName: 'dev' })
+      const company = await this.homeService.getCompany(companyId)
       return company
     } catch (e) {
       console.error(e)
@@ -43,7 +43,6 @@ export class HomeController {
   ): Promise<any> {
     try {
       if (announcementId || !isEmptyObj(queryAnnouncement)) {
-        console.log(queryAnnouncement)
         const announcements = await this.homeService.getAnnouncement(
           announcementId,
           queryAnnouncement,
@@ -61,11 +60,13 @@ export class HomeController {
     @Body() announcement: UpdateAnnouncementDto,
   ): Promise<any> {
     try {
-      const updatedAnnouncement = await this.homeService.updateAnnouncement(
-        announcementId,
-        announcement,
-      )
-      return updatedAnnouncement
+      if (announcementId || !isEmptyObj(announcement)) {
+        const updatedAnnouncement = await this.homeService.updateAnnouncement(
+          announcementId,
+          announcement,
+        )
+        return updatedAnnouncement
+      }
     } catch (e) {
       console.error(e)
     }

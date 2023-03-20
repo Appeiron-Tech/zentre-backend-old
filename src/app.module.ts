@@ -4,6 +4,7 @@ import { MongooseModule } from '@nestjs/mongoose'
 import { CommerceModule } from './applications/commerce/commerce.module'
 import { HomeModule } from './applications/hub/home/home.module'
 import { HomeModule as ADMHomeModule } from './applications/admin/hub/home/home.module'
+import { StoreModule as ADMStoreModule } from './applications/admin/shared/store/store.module'
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
@@ -19,6 +20,7 @@ import { HomeModule as ADMHomeModule } from './applications/admin/hub/home/home.
     CommerceModule,
     //Admin
     ADMHomeModule,
+    ADMStoreModule,
   ],
 })
 export class AppModule {}
