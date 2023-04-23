@@ -2,19 +2,19 @@ import { Injectable } from '@nestjs/common'
 import { removeUndefinedKeys } from 'src/applications/shared/utils/jsonUtils'
 import { AnnouncementService as DBAnnouncementService } from 'src/infrastructure/database/announcement/announcement.service'
 import { HubService as DBHubService } from 'src/infrastructure/database/hub/hub.service'
+import { StoreService as DBStoreService } from 'src/infrastructure/database/store/store.service'
 
 @Injectable()
 export class HomeService {
   constructor(
     private dbHubService: DBHubService,
     private dbAnnouncementService: DBAnnouncementService,
+    private dbStoreService: DBStoreService,
   ) {}
 
   async getCompany(params: { id?: string; tenancyName?: string }): Promise<any> {
-    // const { id, tenancyName } = params
-    const { tenancyName } = params
     try {
-      return await this.dbHubService.findCompany({ tenancyName })
+      return await this.dbHubService.findCompany({ id: params.id })
     } catch (error) {
       throw error
     }
@@ -40,14 +40,23 @@ export class HomeService {
     }
   }
 
+  async getAnnouncement(params: { id: string }): Promise<any> {
+    params = removeUndefinedKeys(params)
+    try {
+      return await this.dbAnnouncementService.findAnnouncement({ _id: params.id })
+    } catch (error) {
+      throw error
+    }
+  }
+
   // ////////////////////////////////////////////////////////////////////////////// //
   // ******************************  Store  ******************************** //
-  // async getStores(params: { company: string; name?: string }): Promise<any> {
-  //   params = removeUndefinedKeys(params)
-  //   try {
-  //     return await this.dbStoreService.findStore({ ...params })
-  //   } catch (error) {
-  //     throw error
-  //   }
-  // }
+  async getStores(params: { companyId: string; name?: string; isMain?: boolean }): Promise<any> {
+    params = removeUndefinedKeys(params)
+    try {
+      return await this.dbStoreService.findStore({ ...params, isActive: true })
+    } catch (error) {
+      throw error
+    }
+  }
 }

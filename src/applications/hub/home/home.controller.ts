@@ -1,35 +1,37 @@
-import { Controller, Get } from '@nestjs/common'
+import { Controller, Get, Param } from '@nestjs/common'
 import { HomeService } from './home.service'
+import { plainToClass } from 'class-transformer'
+import { StoreHomeDto } from './dtos/store.dto'
 
 @Controller('hub/home')
 export class HomeController {
   constructor(private homeService: HomeService) {}
 
-  @Get('/company')
-  async getCompany(): Promise<any> {
+  @Get('/company/:id')
+  async getCompany(@Param('id') id: string): Promise<any> {
     try {
-      const company = await this.homeService.getCompany({ tenancyName: 'dev' })
+      const company = await this.homeService.getCompany({ id: id })
       return company
     } catch (e) {
       console.error(e)
     }
   }
 
-  @Get('/companySns')
-  async getCompanySns(): Promise<any> {
+  @Get('/companySns/:companyId')
+  async getCompanySns(@Param('companyId') companyId: string): Promise<any> {
     try {
-      const sns = await this.homeService.getCompanySns({ companyId: '63c700411aa173942ca540ab' })
+      const sns = await this.homeService.getCompanySns({ companyId: companyId })
       return sns
     } catch (e) {
       console.error(e)
     }
   }
 
-  @Get('/announcements')
-  async getAnnouncements(): Promise<any> {
+  @Get('/announcements/:companyId')
+  async getAnnouncements(@Param('companyId') companyId: string): Promise<any> {
     try {
       const announcements = await this.homeService.getAnnouncements({
-        company: '63c700411aa173942ca540ab',
+        company: companyId,
       })
       return announcements
     } catch (e) {
@@ -37,28 +39,25 @@ export class HomeController {
     }
   }
 
-  // @Get('/contact')
-  // async getContacts(): Promise<any> {
-  //   try {
-  //     const contacts = await this.homeService.getContacts({
-  //       company: '63c700411aa173942ca540ab',
-  //     })
-  //     return contacts
-  //   } catch (e) {
-  //     console.error(e)
-  //   }
-  // }
+  @Get('/announcement/:announcementId')
+  async getAnnouncement(@Param('announcementId') announcementId: string): Promise<any> {
+    try {
+      const announcements = await this.homeService.getAnnouncement({
+        id: announcementId,
+      })
+      return announcements
+    } catch (e) {
+      console.error(e)
+    }
+  }
 
-  // @Get('/store')
-  // async getStores(): Promise<any> {
-  //   try {
-  //     const stores = await this.homeService.getStores({
-  //       company: '63c700411aa173942ca540ab',
-  //       name: 'Miraflores',
-  //     })
-  //     return stores
-  //   } catch (e) {
-  //     console.error(e)
-  //   }
-  // }
+  @Get('/store/:companyId')
+  async getStores(@Param('companyId') companyId: string): Promise<any> {
+    try {
+      const stores = await this.homeService.getStores({ companyId: companyId, isMain: true })
+      return plainToClass(StoreHomeDto, stores[0])
+    } catch (e) {
+      console.error(e)
+    }
+  }
 }

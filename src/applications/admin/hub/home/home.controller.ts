@@ -5,7 +5,7 @@ import { UpdateAnnouncementDto } from './dto/updateAnnouncementDto'
 import { UpdateCompanyDto } from './dto/updateCompanyDto'
 import { HomeService } from './home.service'
 
-@Controller('admin/hub/home')
+@Controller('admin/hub')
 export class HomeController {
   constructor(private homeService: HomeService) {}
 
@@ -19,13 +19,12 @@ export class HomeController {
     }
   }
 
-  @Patch('/company')
-  async updateCompany(): Promise<any> {
+  @Patch('/company/:id')
+  async updateCompany(
+    @Param('id') companyId: string,
+    @Body() rawCompany: UpdateCompanyDto,
+  ): Promise<any> {
     try {
-      const companyId = '63c700411aa173942ca540ab'
-      const rawCompany: UpdateCompanyDto = {
-        description: 'my new description 7',
-      }
       const company = removeUndefinedKeys(rawCompany)
       const updatedCompany = await this.homeService.updateCompany(companyId, company)
       return updatedCompany

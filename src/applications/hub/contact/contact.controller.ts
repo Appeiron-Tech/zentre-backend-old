@@ -1,17 +1,15 @@
-import { Controller, Get } from '@nestjs/common'
+import { Controller, Get, Param } from '@nestjs/common'
 import { ContactService } from './contact.service'
 
 @Controller('hub/contact')
 export class ContactController {
   constructor(private contactService: ContactService) {}
 
-  @Get('/contact')
-  async getContacts(): Promise<any> {
+  @Get('/contact/:companyId')
+  async getCompanySns(@Param('companyId') companyId: string): Promise<any> {
     try {
-      const contacts = await this.contactService.getContacts({
-        company: '63c700411aa173942ca540ab',
-      })
-      return contacts
+      const sns = await this.contactService.getContacts({ companyId: companyId })
+      return sns
     } catch (e) {
       console.error(e)
     }

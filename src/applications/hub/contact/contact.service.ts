@@ -8,7 +8,7 @@ export class ContactService {
 
   // ////////////////////////////////////////////////////////////////////////////// //
   // ********************************  Contact  ********************************** //
-  async getContacts(params: { company: string }): Promise<any> {
+  async getContacts(params: { companyId: string }): Promise<any> {
     params = removeUndefinedKeys(params)
     try {
       return await this.dbContactService.findContact({ ...params })

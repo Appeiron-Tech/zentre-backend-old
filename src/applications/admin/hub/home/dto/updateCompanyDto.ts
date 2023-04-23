@@ -1,7 +1,23 @@
+import { IsArray, IsOptional, IsString, IsUrl } from 'class-validator'
+
 export class UpdateCompanyDto {
-  name?: string
-  description?: string
-  logo?: string
-  cover?: string
-  sns?: any[]
+  @IsOptional()
+  @IsString()
+  name: string
+
+  @IsOptional()
+  @IsString()
+  description: string
+
+  @IsOptional()
+  @IsUrl()
+  logo: string
+
+  @IsOptional()
+  @IsUrl()
+  cover: string
+
+  @IsOptional()
+  @IsArray()
+  sns: any[]
 }

@@ -16,6 +16,10 @@ export class AnnouncementService {
     return await this.announcementModel.find(announcementsQuery).exec()
   }
 
+  async findAnnouncement(announcementsQuery: FilterQuery<Announcement>): Promise<any> {
+    return await this.announcementModel.findOne(announcementsQuery).exec()
+  }
+
   async updateAnnouncement(
     id: string,
     announcement: UpdateAnnouncementDto,
