@@ -55,7 +55,7 @@ export class HomeController {
   async getStores(@Param('companyId') companyId: string): Promise<any> {
     try {
       const stores = await this.homeService.getStores({ companyId: companyId, isMain: true })
-      return plainToClass(StoreHomeDto, stores[0])
+      return plainToClass(StoreHomeDto, stores[0]) //just the first store, by now
     } catch (e) {
       console.error(e)
     }

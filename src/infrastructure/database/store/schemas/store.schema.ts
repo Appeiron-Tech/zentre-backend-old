@@ -1,8 +1,8 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose'
 import { HydratedDocument, Schema as MongooseSchema } from 'mongoose'
-import { IStore } from '../interfaces/store.interface'
-import { IOpeningHour } from '../interfaces/openingHour.interface'
-import { IStorePhone } from '../interfaces/storePhone.interface'
+import { IStore } from '../dtos/interfaces/store.interface'
+import { IOpeningHour } from '../dtos/interfaces/openingHour.interface'
+import { IStorePhone } from '../dtos/interfaces/storePhone.interface'
 
 export type StoreDocument = HydratedDocument<Store>
 
