@@ -5,6 +5,7 @@ import { CommerceModule } from './applications/commerce/commerce.module'
 import { HomeModule } from './applications/hub/home/home.module'
 import { HomeModule as ADMHomeModule } from './applications/admin/hub/home/home.module'
 import { StoreModule as ADMStoreModule } from './applications/admin/shared/store/store.module'
+import { UserModule as ADMUserModule } from './applications/admin/shared/user/user.module'
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
@@ -21,6 +22,7 @@ import { StoreModule as ADMStoreModule } from './applications/admin/shared/store
     //Admin
     ADMHomeModule,
     ADMStoreModule,
+    ADMUserModule,
   ],
 })
 export class AppModule {}

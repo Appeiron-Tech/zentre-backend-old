@@ -33,14 +33,4 @@ export class StoreController {
       console.error(e)
     }
   }
-
-  // @Get('/storesByCompany/:companyId')
-  // async getStores(@Param('companyId') companyId: string): Promise<any> {
-  //   try {
-  //     const stores = await this.homeService.getStores({ companyId: companyId, isMain: true })
-  //     return plainToClass(StoreHomeDto, stores[0]) //just the first store, by now
-  //   } catch (e) {
-  //     console.error(e)
-  //   }
-  // }
 }
