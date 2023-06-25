@@ -2,7 +2,6 @@ import { Injectable } from '@nestjs/common'
 import { InjectModel } from '@nestjs/mongoose'
 import { User, UserDocument } from './schemas/user.schema'
 import { FilterQuery, Model } from 'mongoose'
-import { ObjectId } from 'mongodb'
 import { IUser } from './interfaces/user.interface'
 import { CreateUserDto } from './dtos/createUserDto'
 

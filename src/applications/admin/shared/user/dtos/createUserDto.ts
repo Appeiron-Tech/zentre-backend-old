@@ -5,7 +5,6 @@ import {
   IsNumber,
   IsObject,
   IsOptional,
-  IsPhoneNumber,
   IsString,
   IsUrl,
 } from 'class-validator'

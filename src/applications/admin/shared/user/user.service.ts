@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common'
 import { UserService as DBUserService } from 'src/infrastructure/database/user/user.service'
+import { IUser } from './interfaces/IUser.interface'
 
 @Injectable()
 export class UserService {
@@ -13,7 +14,7 @@ export class UserService {
     }
   }
 
-  async getUser(params: { id?: string; email?: string }): Promise<any> {
+  async getUser(params: { id?: string; email?: string }): Promise<IUser> {
     try {
       return await this.dbUserService.findUser(params)
     } catch (error) {
